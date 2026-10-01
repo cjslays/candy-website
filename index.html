@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Taxkeeping LLC | Tax preparation, bookkeeping & payroll</title>
+<meta name="description" content="Taxkeeping LLC prepares individual and business tax returns and keeps your books, payroll, and quarterly estimates in order all year.">
+<meta name="theme-color" content="#1B3029">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Taxkeeping LLC | Your taxes, kept.">
+<meta property="og:description" content="Individual and small business tax returns, bookkeeping, payroll, and year-round tax planning.">
+<meta property="og:image" content="/assets/taxkeeping-logo.svg">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --desk:#27433A; --desk-deep:#1B3029; --paper:#FCFCFA; --paper-edge:#E6EAE7;
+  --ink:#17232B; --ink-soft:#4E5D66; --rule:#C8D0D2; --hi:#F4DC4A; --hi-ink:#17232B;
+  --red:#B3302B; --green:#1F6B4A; --on-desk:#F2F5F3; --on-desk-soft:#B9C9C1;
+  --shadow:0 1px 0 rgba(0,0,0,.08), 0 18px 40px -18px rgba(0,0,0,.55);
+  --font:"Public Sans", "Helvetica Neue", Arial, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --desk:#15241F; --desk-deep:#0E1915; --paper:#1C2622; --paper-edge:#2A3732;
+    --ink:#E9EEEB; --ink-soft:#A7B5AE; --rule:#34433D; --hi:#6E6215; --hi-ink:#FFF8D6;
+    --red:#F08A80; --green:#7FD1A6; --on-desk:#E9EEEB; --on-desk-soft:#94A79E; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --desk:#15241F; --desk-deep:#0E1915; --paper:#1C2622; --paper-edge:#2A3732;
+  --ink:#E9EEEB; --ink-soft:#A7B5AE; --rule:#34433D; --hi:#6E6215; --hi-ink:#FFF8D6;
+  --red:#F08A80; --green:#7FD1A6; --on-desk:#E9EEEB; --on-desk-soft:#94A79E; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body{margin:0; font-family:var(--font); color:var(--ink); background:var(--desk); line-height:1.6; font-size:1.0625rem; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hi); outline-offset:3px; border-radius:4px}
+.wrap{width:min(1120px, 100% - 2.5rem); margin-inline:auto}
+
+/* ---------- desk background ---------- */
+.desk{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+  background:radial-gradient(120% 90% at 70% 20%, var(--desk) 0%, var(--desk-deep) 100%)}
+.aspens{position:absolute; left:0; right:0; top:0; height:112%; z-index:0; will-change:transform}
+.aspens svg{width:100%; height:100%; display:block}
+.tint{position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(18,36,29,.72) 0%, rgba(22,44,35,.48) 45%, rgba(16,32,26,.74) 100%)}
+.item{z-index:2}
+.desk::after{z-index:3; content:""; position:absolute; inset:0; background:radial-gradient(80% 70% at 50% 50%, transparent 50%, rgba(0,0,0,.35) 100%)}
+.item{position:absolute; left:var(--x); top:var(--y); width:calc(var(--w) * 1px * var(--s,1)); will-change:transform}
+.drop{animation:drop .9s cubic-bezier(.2,.9,.25,1.05) both; animation-delay:var(--d,0s)}
+.rot{transform:rotate(var(--r)); filter:drop-shadow(0 14px 18px rgba(0,0,0,.35)) drop-shadow(0 2px 2px rgba(0,0,0,.25))}
+.rot svg{display:block; width:100%; height:auto}
+@keyframes drop{from{opacity:0; transform:translate(-30px,-70px) rotate(8deg) scale(1.06)} to{opacity:1; transform:none}}
+@media (max-width:900px){.item{--s:.62} .item.hide-sm{display:none}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .rot{opacity:.78}}
+:root[data-theme="dark"] .rot{opacity:.78}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tint{background:rgba(8,16,13,.78)}}
+:root[data-theme="dark"] .tint{background:rgba(8,16,13,.78)}
+
+main,header,footer{position:relative; z-index:1}
+
+/* ---------- header ---------- */
+.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; transition:background .3s, box-shadow .3s}
+.top.scrolled{background:color-mix(in srgb, var(--desk-deep) 88%, transparent); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.top .wrap{display:flex; align-items:center; justify-content:space-between; height:72px; gap:1rem}
+.brand{display:flex; align-items:center; gap:.65rem; text-decoration:none; color:var(--on-desk); font-weight:800; font-size:1.15rem; letter-spacing:-.01em}
+.brand .mark{display:grid; place-items:center; filter:drop-shadow(0 4px 8px rgba(0,0,0,.35)); transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.brand:hover .mark{transform:rotate(-8deg) scale(1.06)}
+.brand .wm{font-weight:500; font-size:1.3rem; letter-spacing:-.025em; line-height:1}
+.brand .wm b{font-weight:900}
+.brand .wm i{font-style:normal; font-size:.62rem; font-weight:700; letter-spacing:.06em; margin-left:.3rem; vertical-align:.5em; color:var(--hi)}
+.brand small{display:block; font-weight:500; font-size:.74rem; color:var(--on-desk-soft); letter-spacing:0; margin-top:3px}
+.nav{display:flex; align-items:center; gap:.35rem}
+.nav a{color:var(--on-desk); text-decoration:none; font-weight:500; font-size:.95rem; padding:.5rem .8rem; border-radius:6px; transition:background .2s}
+.nav a:hover{background:rgba(255,255,255,.1)}
+.nav a.cta{background:var(--hi); color:#17232B; font-weight:700; margin-left:.4rem}
+.nav a.cta:hover{background:#fbe56c}
+.menu-btn{display:none; background:none; border:0; color:var(--on-desk); width:44px; height:44px; border-radius:8px; cursor:pointer}
+.menu-btn span{display:block; width:22px; height:2px; background:currentColor; margin:5px auto; transition:transform .3s, opacity .2s}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:760px){
+  .menu-btn{display:block}
+  .nav{position:absolute; top:72px; left:1rem; right:1rem; flex-direction:column; align-items:stretch; background:var(--paper); padding:.6rem; border-radius:10px; box-shadow:var(--shadow);
+    transform-origin:top; transform:scaleY(.9); opacity:0; visibility:hidden; transition:all .22s}
+  .nav.open{transform:none; opacity:1; visibility:visible}
+  .nav a{color:var(--ink); padding:.8rem 1rem}
+  .nav a:hover{background:var(--paper-edge)}
+  .nav a.cta{margin:.3rem 0 0; text-align:center}
+}
+
+/* ---------- paper sheets ---------- */
+.sheet{background:var(--paper); color:var(--ink); border-radius:3px; box-shadow:var(--shadow); position:relative}
+.formhead{display:grid; grid-template-columns:auto 1fr auto; align-items:end; gap:1rem; border-bottom:3px solid var(--ink); padding:1.1rem 1.6rem .8rem}
+.formhead .fno{font-size:.72rem; line-height:1.1; color:var(--ink-soft)}
+.formhead .fno b{display:block; font-size:1.55rem; font-weight:900; color:var(--ink); letter-spacing:-.02em}
+.formhead .ftitle{font-weight:700; font-size:.95rem; line-height:1.25; border-left:1px solid var(--rule); padding-left:1rem}
+.formhead .ftitle span{display:block; font-weight:400; font-size:.75rem; color:var(--ink-soft)}
+.formhead .fyear{font-size:2.1rem; font-weight:900; line-height:.9; letter-spacing:-.03em}
+.formhead .fyear .o{-webkit-text-stroke:1.5px var(--ink); color:transparent}
+.sheet-body{padding:clamp(1.4rem, 4vw, 2.8rem) clamp(1.3rem, 4vw, 3rem)}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(1.5rem, 6vw, 5rem) 0 clamp(4rem, 10vw, 8rem)}
+.hero .sheet{max-width:680px; transform:rotate(-.6deg)}
+.hero h1{font-size:clamp(2.4rem, 6.4vw, 4.4rem); line-height:1.02; letter-spacing:-.035em; font-weight:900; margin:0 0 1.2rem}
+.hl{background:linear-gradient(var(--hi),var(--hi)) no-repeat 0 88% / 0% 42%; -webkit-box-decoration-break:clone; box-decoration-break:clone; color:var(--hi-ink);
+  animation:swipe .9s cubic-bezier(.6,.1,.2,1) 1.15s forwards; padding:0 .08em}
+@keyframes swipe{to{background-size:100% 42%}}
+.hero p.lead{font-size:clamp(1.05rem, 2vw, 1.2rem); color:var(--ink-soft); max-width:34em; margin:0 0 1.8rem}
+.btns{display:flex; flex-wrap:wrap; gap:.75rem}
+.btn{display:inline-flex; align-items:center; gap:.5rem; font:inherit; font-weight:700; font-size:1rem; text-decoration:none; border-radius:7px; padding:.85rem 1.35rem; cursor:pointer; border:2px solid var(--ink); transition:transform .15s, background .2s, color .2s}
+.btn:active{transform:translateY(1px)}
+.btn-ink{background:var(--ink); color:var(--paper)}
+.btn-ink:hover{background:transparent; color:var(--ink)}
+.btn-line{background:transparent; color:var(--ink)}
+.btn-line:hover{background:var(--ink); color:var(--paper)}
+.sig{display:flex; gap:2rem; flex-wrap:wrap; margin-top:2.2rem; padding-top:1.1rem; border-top:1px solid var(--rule); font-size:.9rem; color:var(--ink-soft)}
+.sig div b{display:block; color:var(--ink); font-size:1rem}
+
+/* ---------- services ---------- */
+.section{padding:clamp(2rem, 6vw, 4.5rem) 0}
+.sec-intro{max-width:36em; margin-bottom:1.6rem}
+.sec-intro h2{font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-.025em; margin:0 0 .6rem; font-weight:900}
+.sec-intro p{margin:0; color:var(--ink-soft)}
+.lines{list-style:none; margin:0; padding:0; border-top:2px solid var(--ink)}
+.line{border-bottom:1px solid var(--rule)}
+.line-btn{all:unset; box-sizing:border-box; width:100%; display:grid; grid-template-columns:3rem 1fr auto; align-items:center; gap:1rem; padding:1.15rem .4rem; cursor:pointer; transition:background .2s}
+.line-btn:hover{background:color-mix(in srgb, var(--hi) 22%, transparent)}
+.line-btn:focus-visible{outline:3px solid var(--hi); outline-offset:-3px}
+.lno{font-weight:900; font-size:1.05rem; color:var(--ink-soft); font-variant-numeric:tabular-nums}
+.lname{font-weight:700; font-size:clamp(1.05rem, 2.2vw, 1.3rem); letter-spacing:-.01em}
+.lname small{display:block; font-weight:400; font-size:.92rem; color:var(--ink-soft); letter-spacing:0; margin-top:.1rem}
+.lbox{width:38px; height:38px; border:1.5px solid var(--ink); border-radius:4px; display:grid; place-items:center; transition:background .25s, transform .3s}
+.lbox svg{transition:transform .3s}
+.line.open .lbox{background:var(--ink); color:var(--paper)}
+.line.open .lbox svg{transform:rotate(45deg)}
+.ldetail{display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease}
+.line.open .ldetail{grid-template-rows:1fr}
+.ldetail > div{overflow:hidden}
+.ldetail-in{padding:0 .4rem 1.4rem 4rem; display:grid; grid-template-columns:1fr auto; gap:1.5rem; align-items:end}
+.ldetail ul{margin:0; padding:0; list-style:none; display:grid; gap:.4rem}
+.ldetail li{padding-left:1.6rem; position:relative}
+.ldetail li::before{content:""; position:absolute; left:0; top:.45em; width:.9rem; height:.5rem; border-left:2.5px solid var(--green); border-bottom:2.5px solid var(--green); transform:rotate(-45deg)}
+.ask{font:inherit; font-weight:700; font-size:.92rem; background:none; border:0; border-bottom:2px solid var(--hi); padding:.2rem 0; cursor:pointer; color:var(--ink); white-space:nowrap}
+.ask:hover{background:var(--hi); color:#17232B}
+@media (max-width:640px){
+  .line-btn{grid-template-columns:2.2rem 1fr auto; gap:.7rem}
+  .ldetail-in{padding-left:2.9rem; grid-template-columns:1fr}
+  .formhead{grid-template-columns:auto 1fr; padding:1rem 1.2rem .7rem}
+  .formhead .fyear{display:none}
+}
+
+/* ---------- deadlines ---------- */
+.deadlines{color:var(--on-desk)}
+.dl-grid{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:clamp(1.5rem, 5vw, 4rem); align-items:center}
+.dl-grid h2{font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-.025em; margin:0 0 .6rem; font-weight:900}
+.dl-grid > div > p{color:var(--on-desk-soft); margin:0 0 1.6rem; max-width:32em}
+.count{display:flex; align-items:baseline; gap:.9rem; flex-wrap:wrap}
+.count .days{font-size:clamp(4.5rem, 14vw, 8.5rem); font-weight:900; line-height:.85; letter-spacing:-.05em; color:var(--hi); font-variant-numeric:tabular-nums}
+.count .what{font-size:1.1rem; max-width:15em; line-height:1.35}
+.count .what b{display:block; font-size:1.25rem}
+.dl-list{background:var(--paper); color:var(--ink); border-radius:3px; box-shadow:var(--shadow); padding:.4rem 0; transform:rotate(.8deg)}
+.dl-tabs{display:flex; gap:.3rem; padding:.8rem 1.2rem .6rem; border-bottom:2px solid var(--ink)}
+.dl-tabs button{font:inherit; font-size:.88rem; font-weight:600; background:none; border:1.5px solid var(--rule); color:var(--ink-soft); padding:.35rem .8rem; border-radius:99px; cursor:pointer; transition:all .2s}
+.dl-tabs button[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--paper)}
+.dl-row{display:grid; grid-template-columns:4.2rem 1fr; gap:1rem; padding:.85rem 1.2rem; border-bottom:1px solid var(--rule); align-items:center}
+.dl-row:last-child{border-bottom:0}
+.dl-date{text-align:center; line-height:1; border:1.5px solid var(--ink); border-radius:4px; padding:.4rem 0}
+.dl-date b{display:block; font-size:1.4rem; font-weight:900}
+.dl-date span{font-size:.72rem; font-weight:700; color:var(--ink-soft)}
+.dl-row .t{font-weight:600; line-height:1.3}
+.dl-row .t small{display:block; font-weight:400; color:var(--ink-soft); font-size:.86rem}
+.dl-note{font-size:.8rem; color:var(--ink-soft); padding:.7rem 1.2rem .5rem}
+@media (max-width:820px){.dl-grid{grid-template-columns:1fr} .dl-list{transform:none}}
+
+/* ---------- steps ---------- */
+.steps{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:0; border-top:2px solid var(--ink)}
+.step{padding:1.5rem 1.4rem 1.2rem 0; border-right:1px solid var(--rule)}
+.step + .step{padding-left:1.4rem}
+.step:last-child{border-right:0}
+.step .n{width:2.4rem; height:2.4rem; border-radius:50%; border:2px solid var(--ink); display:grid; place-items:center; font-weight:900; margin-bottom:.9rem}
+.step h3{margin:0 0 .35rem; font-size:1.2rem; letter-spacing:-.01em}
+.step p{margin:0; color:var(--ink-soft); font-size:.98rem}
+@media (max-width:760px){.steps{grid-template-columns:1fr} .step,.step + .step{padding:1.3rem 0; border-right:0; border-bottom:1px solid var(--rule)} .step:last-child{border-bottom:0}}
+
+/* ---------- contact ---------- */
+.contact .sheet{max-width:860px; margin-inline:auto}
+.fgrid{display:grid; grid-template-columns:1fr 1fr; border-top:2px solid var(--ink); border-left:1px solid var(--rule)}
+.box{border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:.55rem .85rem .6rem; position:relative; transition:background .2s}
+.box.full{grid-column:1 / -1}
+.box:focus-within{background:color-mix(in srgb, var(--hi) 20%, transparent)}
+.box label{display:flex; gap:.45rem; font-size:.8rem; font-weight:600; color:var(--ink-soft)}
+.box label b{color:var(--ink); font-weight:900}
+.box input,.box select,.box textarea{width:100%; font:inherit; font-size:1.05rem; color:var(--ink); background:transparent; border:0; padding:.3rem 0 .15rem; outline:none; border-radius:0}
+.box select{appearance:none; -webkit-appearance:none; cursor:pointer; background-image:linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position:calc(100% - 12px) 55%, calc(100% - 7px) 55%; background-size:5px 5px; background-repeat:no-repeat}
+.box select option{color:#17232B}
+.box textarea{resize:vertical; min-height:8rem; line-height:1.5}
+.box .err{display:none; font-size:.82rem; color:var(--red); font-weight:600}
+.box.invalid{background:color-mix(in srgb, var(--red) 8%, transparent)}
+.box.invalid .err{display:block}
+.req{color:var(--red)}
+.hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+.fend{display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; padding-top:1.4rem}
+.fend p{margin:0; font-size:.88rem; color:var(--ink-soft); max-width:30em}
+.status{margin-top:1rem; padding:.9rem 1.1rem; border-radius:6px; font-weight:600; display:none}
+.status.show{display:block}
+.status.ok{background:color-mix(in srgb, var(--green) 14%, transparent); color:var(--green); border:1.5px solid var(--green)}
+.status.bad{background:color-mix(in srgb, var(--red) 10%, transparent); color:var(--red); border:1.5px solid var(--red)}
+.sent{text-align:center; padding:2.5rem 1rem 1rem; display:none}
+.sent.show{display:block}
+.stamp{display:inline-block; border:4px solid var(--green); color:var(--green); font-weight:900; font-size:1.8rem; letter-spacing:.04em; padding:.4rem 1.2rem; border-radius:6px; transform:rotate(-6deg) scale(1.6); opacity:0; animation:stamp .45s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes stamp{to{transform:rotate(-6deg) scale(1); opacity:1}}
+.sent p{color:var(--ink-soft)}
+@media (max-width:640px){.fgrid{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+footer{color:var(--on-desk-soft); padding:3rem 0 4.5rem; font-size:.92rem}
+footer .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; border-top:1px solid rgba(255,255,255,.12); padding-top:1.5rem}
+footer a{color:var(--on-desk)}
+.fbrand{display:flex; align-items:center; gap:.7rem}
+
+/* ---------- back to top ---------- */
+.totop{position:fixed; right:calc(1.25rem + env(safe-area-inset-right,0px)); bottom:calc(1.25rem + env(safe-area-inset-bottom,0px)); z-index:30; width:56px; height:56px; border-radius:50%; border:0; cursor:pointer;
+  background:var(--ink); color:var(--paper); display:grid; place-items:center; box-shadow:0 10px 24px -8px rgba(0,0,0,.6);
+  opacity:0; visibility:hidden; transform:translateY(16px) scale(.9); transition:opacity .3s, transform .3s, visibility .3s, background .2s}
+.totop.show{opacity:1; visibility:visible; transform:none}
+.totop:hover{transform:translateY(-3px)}
+.totop .ring{position:absolute; inset:0; transform:rotate(-90deg)}
+.totop .ring circle{fill:none; stroke-width:3}
+.totop .ring .track{stroke:rgba(255,255,255,.15)}
+.totop .ring .bar{stroke:var(--hi); stroke-linecap:round; stroke-dasharray:157; stroke-dashoffset:157; transition:stroke-dashoffset .1s linear}
+.totop .arrow{position:relative; transition:transform .25s}
+.totop:hover .arrow{transform:translateY(-3px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .totop .ring .track{stroke:rgba(0,0,0,.2)}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important; animation-delay:0s !important; transition-duration:.01ms !important}
+  .hl{background-size:100% 42%}
+}
+</style>
+</head>
+<body>
+
+<div class="desk" id="desk" aria-hidden="true"></div>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#hero" aria-label="Taxkeeping LLC home">
+      <span class="mark"><svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><path d="M13 5h27l13 13v41H13z" fill="#FCFCFA" stroke="#17232B" stroke-width="3.5" stroke-linejoin="round"/><path d="M40 5v13h13z" fill="#F4DC4A" stroke="#17232B" stroke-width="3.5" stroke-linejoin="round"/><rect x="19" y="12" width="16" height="6" rx="1.5" fill="#F4DC4A"/><path d="M20 15h14M20 23h10" stroke="#17232B" stroke-width="3" stroke-linecap="round"/><circle cx="33" cy="35" r="7" fill="#1F6B4A"/><path d="M29.6 38.5 27 51h12l-2.6-12.5z" fill="#1F6B4A"/></svg></span>
+      <span class="word"><span class="wm"><b>Tax</b>keeping<i>LLC</i></span><small>Your taxes, kept.</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#deadlines">Deadlines</a>
+      <a href="#how">How it works</a>
+      <a href="#contact" class="cta">Contact us</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div class="sheet">
+        <div class="formhead">
+          <div class="fno">Form<b>TK-1</b></div>
+          <div class="ftitle">Taxkeeping LLC<span>Individual &amp; small business tax services</span></div>
+          <div class="fyear">20<span class="o">26</span></div>
+        </div>
+        <div class="sheet-body">
+          <h1><span class="hl">Your taxes, kept in order all year.</span></h1>
+          <p class="lead">We prepare your returns, keep your books, run payroll, and track every deadline, so tax season is a signature instead of a scramble.</p>
+          <div class="btns">
+            <a class="btn btn-ink" href="#contact">Send us a message</a>
+            <a class="btn btn-line" href="#services">See our services</a>
+          </div>
+          <div class="sig">
+            <div><b>Individuals</b>W-2, retirement, rental &amp; side income</div>
+            <div><b>Small businesses</b>LLCs, S corps, partnerships</div>
+            <div><b>Year-round</b>Not just in April</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="sheet">
+        <div class="formhead">
+          <div class="fno">Schedule<b>S</b></div>
+          <div class="ftitle">Services offered<span>Select a line to see what's included</span></div>
+          <div class="fyear">20<span class="o">26</span></div>
+        </div>
+        <div class="sheet-body">
+          <div class="sec-intro">
+            <h2>Everything your return depends on</h2>
+            <p>Pick one service or hand us the whole stack. Each engagement starts with a conversation about what you actually need.</p>
+          </div>
+          <ul class="lines" id="lines"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEADLINES -->
+  <section class="section deadlines" id="deadlines">
+    <div class="wrap dl-grid">
+      <div>
+        <h2>The next IRS deadline is coming up</h2>
+        <p>Missed deadlines mean penalties and interest. We keep track of these for every client, so you don't have to.</p>
+        <div class="count" aria-live="polite">
+          <div class="days" id="dlDays">0</div>
+          <div class="what" id="dlWhat"></div>
+        </div>
+      </div>
+      <div class="dl-list">
+        <div class="dl-tabs" role="group" aria-label="Show deadlines for">
+          <button type="button" data-f="all" aria-pressed="true">Everyone</button>
+          <button type="button" data-f="ind" aria-pressed="false">Individuals</button>
+          <button type="button" data-f="biz" aria-pressed="false">Businesses</button>
+        </div>
+        <div id="dlRows"></div>
+        <div class="dl-note">Federal dates. When a deadline falls on a weekend it moves to the next business day.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="sheet">
+        <div class="formhead">
+          <div class="fno">Part<b>II</b></div>
+          <div class="ftitle">How it works<span>From first message to filed return</span></div>
+          <div class="fyear">20<span class="o">26</span></div>
+        </div>
+        <div class="sheet-body">
+          <div class="steps">
+            <div class="step"><div class="n">1</div><h3>Tell us what you need</h3><p>Fill out the form below. We'll follow up to talk through your situation and give you a clear quote.</p></div>
+            <div class="step"><div class="n">2</div><h3>Share your documents</h3><p>Send your W-2s, 1099s, receipts, and statements. We'll tell you exactly what's missing.</p></div>
+            <div class="step"><div class="n">3</div><h3>Review, sign, file</h3><p>We prepare everything, walk you through it, and file once you approve. Then we keep you on track for next year.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <div class="sheet">
+        <div class="formhead">
+          <div class="fno">Form<b>TK-C</b></div>
+          <div class="ftitle">Request for tax help<span>Goes straight to Candy at Taxkeeping LLC</span></div>
+          <div class="fyear">20<span class="o">26</span></div>
+        </div>
+        <div class="sheet-body">
+          <div class="sec-intro">
+            <h2>Get in touch</h2>
+            <p>Tell us a little about what you need. Please don't include Social Security numbers or account numbers here.</p>
+          </div>
+
+          <form id="contactForm" action="https://formsubmit.co/candy@taxkeepingllc.com" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New inquiry from the Taxkeeping LLC website">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
+            <div class="fgrid">
+              <div class="box">
+                <label for="name"><b>1</b> Full name <span class="req">*</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
+                <div class="err">Enter your name.</div>
+              </div>
+              <div class="box">
+                <label for="email"><b>2</b> Email address <span class="req">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+                <div class="err">Enter an email address like name@example.com.</div>
+              </div>
+              <div class="box">
+                <label for="phone"><b>3</b> Phone (optional)</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+              </div>
+              <div class="box">
+                <label for="service"><b>4</b> Service you're interested in</label>
+                <select id="service" name="service">
+                  <option value="">Not sure yet</option>
+                </select>
+              </div>
+              <div class="box full">
+                <label for="message"><b>5</b> How can we help? <span class="req">*</span></label>
+                <textarea id="message" name="message" required placeholder="For example: I started a side business this year and need help with my return and quarterly payments."></textarea>
+                <div class="err">Add a short message so we know how to help.</div>
+              </div>
+            </div>
+
+            <div class="fend">
+              <p>Fields marked <span class="req">*</span> are required. Your details are only used to respond to you.</p>
+              <button class="btn btn-ink" type="submit" id="sendBtn">Send message</button>
+            </div>
+            <div class="status" id="status" role="alert"></div>
+          </form>
+
+          <div class="sent" id="sent" tabindex="-1">
+            <div class="stamp">RECEIVED</div>
+            <h3 style="font-size:1.5rem;margin:1.6rem 0 .4rem">Message sent</h3>
+            <p id="sentMsg">We'll reply by email soon.</p>
+            <button class="btn btn-line" type="button" id="againBtn">Send another message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><path d="M13 5h27l13 13v41H13z" fill="#FCFCFA" stroke="#17232B" stroke-width="3.5" stroke-linejoin="round"/><path d="M40 5v13h13z" fill="#F4DC4A" stroke="#17232B" stroke-width="3.5" stroke-linejoin="round"/><rect x="19" y="12" width="16" height="6" rx="1.5" fill="#F4DC4A"/><path d="M20 15h14M20 23h10" stroke="#17232B" stroke-width="3" stroke-linecap="round"/><circle cx="33" cy="35" r="7" fill="#1F6B4A"/><path d="M29.6 38.5 27 51h12l-2.6-12.5z" fill="#1F6B4A"/></svg><span>&copy; <span id="yr">2026</span> Taxkeeping LLC. All rights reserved.</span></div>
+    <div><a href="mailto:candy@taxkeepingllc.com">candy@taxkeepingllc.com</a></div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="Back to top">
+  <svg class="ring" viewBox="0 0 56 56" aria-hidden="true"><circle class="track" cx="28" cy="28" r="25"/><circle class="bar" id="ringBar" cx="28" cy="28" r="25"/></svg>
+  <svg class="arrow" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4M4.5 9.5L10 4l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+  /* ================= Colorado aspen grove (illustrated) ================= */
+  function aspenGrove(){
+    let a = 21; const r = () => (a = (a * 16807) % 2147483647) / 2147483647;
+    const W = 1600, H = 1000;
+    const gold = ['#F2B326','#E9C43F','#DB9A1E','#F5CF55','#C7A93A','#E0AE2E'];
+    let s = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FB6DE"/><stop offset=".6" stop-color="#CFE3EE"/><stop offset="1" stop-color="#EEF0E2"/></linearGradient>
+        <linearGradient id="bark" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FBF9F2"/><stop offset=".55" stop-color="#E8E4D8"/><stop offset="1" stop-color="#ABA697"/></linearGradient>
+        <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A650"/><stop offset="1" stop-color="#8C7437"/></linearGradient>
+        <filter id="haze"><feGaussianBlur stdDeviation="1.6"/></filter>
+      </defs>
+      <rect width="${W}" height="${H}" fill="url(#sky)"/>
+      <path d="M0 560 L140 430 L230 480 L360 330 L470 420 L560 360 L700 470 L820 300 L930 400 L1040 340 L1180 450 L1300 320 L1420 410 L1600 350 V${H} H0Z" fill="#8FA7B7"/>
+      <path d="M360 330 L395 365 L375 362 L360 350 L342 368 L330 362Z M820 300 L858 340 L836 336 L820 322 L802 342 L790 336Z M1300 320 L1336 356 L1316 352 L1300 338 L1284 356 L1272 350Z" fill="#F4F7F8"/>
+      <path d="M0 640 L180 560 L330 600 L520 540 L700 610 L900 550 L1100 620 L1300 560 L1600 610 V${H} H0Z" fill="#5E7F6A"/>`;
+    // distant grove
+    let back = '';
+    for(let i=0;i<70;i++){ const x=r()*W, y=560+r()*60; back += `<circle cx="${x}" cy="${y}" r="${18+r()*26}" fill="${gold[i%gold.length]}" opacity=".75"/>`; }
+    for(let i=0;i<46;i++){ const x=r()*W, w=3+r()*4, top=520+r()*60; back += `<rect x="${x}" y="${top}" width="${w}" height="${740-top}" fill="#EDEAE0" opacity=".85"/>`; }
+    s += `<g filter="url(#haze)">${back}</g>`;
+    s += `<rect y="690" width="${W}" height="${H-690}" fill="url(#grass)"/>`;
+    // mid + front trunks
+    const trunks = [];
+    for(let i=0;i<24;i++){ const front = i>=12; trunks.push({x: (i%12)*(W/12) + r()*W/14 + (front?40:0), w: front? 26+r()*22 : 11+r()*9, base: front? 900+r()*100 : 760+r()*50, front}); }
+    function trunk(t){
+      let g = `<rect x="${t.x}" y="-20" width="${t.w}" height="${t.base+20}" fill="url(#bark)"/>`;
+      for(let y=40; y<t.base-20; y+= 28 + r()*60){
+        const k = r();
+        if(k<.35){ const cx=t.x+t.w*(.3+r()*.4), ew=t.w*(.35+r()*.35), eh=3+r()*5;
+          g += `<path d="M${cx-ew} ${y} Q${cx} ${y-eh} ${cx+ew} ${y} Q${cx} ${y+eh} ${cx-ew} ${y}Z" fill="#26241F"/>`; }
+        else if(k<.8){ g += `<rect x="${t.x+t.w*r()*.4}" y="${y}" width="${t.w*(.2+r()*.4)}" height="${1.4+r()*1.4}" rx="1" fill="#3A372F" opacity=".7"/>`; }
+        else { g += `<path d="M${t.x+t.w*.15} ${y} q${t.w*.35} -6 ${t.w*.7} 0 q-${t.w*.35} 10 -${t.w*.7} 0z" fill="#4A463C" opacity=".55"/>`; }
+      }
+      return g;
+    }
+    trunks.filter(t=>!t.front).forEach(t=> s += trunk(t));
+    // mid canopy
+    for(let i=0;i<160;i++){ s += `<circle cx="${r()*W}" cy="${r()*300}" r="${16+r()*30}" fill="${gold[i%gold.length]}" opacity=".9"/>`; }
+    trunks.filter(t=>t.front).forEach(t=> s += trunk(t));
+    // front canopy + fluttering leaves
+    for(let i=0;i<130;i++){ s += `<circle cx="${r()*W}" cy="${-30+r()*200}" r="${20+r()*38}" fill="${gold[(i+2)%gold.length]}"/>`; }
+    for(let i=0;i<120;i++){ const x=r()*W, y=200+r()*760, rr=3+r()*4;
+      s += `<ellipse cx="${x}" cy="${y}" rx="${rr}" ry="${rr*.75}" transform="rotate(${r()*180} ${x} ${y})" fill="${gold[i%gold.length]}" opacity="${.6+r()*.4}"/>`; }
+    return s + `</svg>`;
+  }
+  const deskEl = document.getElementById('desk');
+  const grove = document.createElement('div'); grove.className='aspens'; grove.innerHTML = aspenGrove();
+  const tint = document.createElement('div'); tint.className='tint';
+  deskEl.appendChild(grove); deskEl.appendChild(tint);
+
+  /* ================= Tax-form background ================= */
+  // Deterministic pseudo-random so the forms look the same each load
+  let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  const F = 'font-family="Public Sans, Arial, sans-serif"';
+
+  function header(W, num, title, sub, year, ink){
+    return `<text x="12" y="18" font-size="7" fill="${ink}" ${F}>Form</text>
+      <text x="12" y="38" font-size="21" font-weight="900" fill="${ink}" ${F}>${num}</text>
+      <line x1="${W*0.27}" y1="8" x2="${W*0.27}" y2="44" stroke="${ink}" stroke-width=".6"/>
+      <text x="${W*0.29}" y="22" font-size="10" font-weight="700" fill="${ink}" ${F}>${title}</text>
+      <text x="${W*0.29}" y="34" font-size="5.8" fill="${ink}" ${F}>${sub}</text>
+      ${year ? `<text x="${W-12}" y="40" font-size="24" font-weight="900" text-anchor="end" fill="${ink}" ${F}>${year}</text>` : ''}
+      <rect x="0" y="48" width="${W}" height="3" fill="${ink}"/>`;
+  }
+  function linesForm(o){
+    const {W,H,num,title,sub,year,ink='#1b2a33',start=1} = o;
+    let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"><rect width="${W}" height="${H}" fill="#fdfdfb"/>` + header(W,num,title,sub,year,ink);
+    // name/address block
+    s += `<rect x="12" y="60" width="${W-24}" height="34" fill="none" stroke="${ink}" stroke-width=".5"/>
+          <line x1="${W*0.5}" y1="60" x2="${W*0.5}" y2="94" stroke="${ink}" stroke-width=".5"/>
+          <text x="16" y="68" font-size="5" fill="${ink}" ${F}>Your first name and middle initial</text>
+          <text x="${W*0.5+4}" y="68" font-size="5" fill="${ink}" ${F}>Last name</text>`;
+    let n = start;
+    for(let y=110; y<H-14; y+=15){
+      const bw = W*(0.25 + rnd()*0.35);
+      s += `<text x="14" y="${y+3}" font-size="6.5" font-weight="700" fill="${ink}" ${F}>${n}</text>
+            <rect x="30" y="${y-1.5}" width="${bw}" height="3" rx="1" fill="${ink}" opacity=".32"/>
+            <line x1="${30+bw+6}" y1="${y+2}" x2="${W*0.72}" y2="${y+2}" stroke="${ink}" stroke-width=".5" stroke-dasharray="1 2" opacity=".6"/>
+            <text x="${W*0.74}" y="${y+3}" font-size="6" font-weight="700" fill="${ink}" ${F}>${n}</text>
+            <rect x="${W*0.78}" y="${y-6}" width="${W*0.22-12}" height="12" fill="none" stroke="${ink}" stroke-width=".5"/>`;
+      n++;
+    }
+    return s + `</svg>`;
+  }
+  function gridForm(o){
+    const {W,H,num,title,sub,year,ink,boxes} = o;
+    let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"><rect width="${W}" height="${H}" fill="#fdfdfb"/>` + header(W,num,title,sub,year,ink);
+    const colW = (W-24)/2, rowH = 30; let i=0;
+    for(let r=0; r<Math.ceil(boxes.length/2); r++){
+      for(let c=0;c<2;c++){
+        const b = boxes[i++]; if(!b) break;
+        const x = 12 + c*colW, y = 58 + r*rowH;
+        s += `<rect x="${x}" y="${y}" width="${colW}" height="${rowH}" fill="none" stroke="${ink}" stroke-width=".7"/>
+              <text x="${x+4}" y="${y+8}" font-size="5.6" fill="${ink}" ${F}>${b}</text>`;
+      }
+    }
+    const yy = 58 + Math.ceil(boxes.length/2)*rowH + 12;
+    s += `<text x="12" y="${yy}" font-size="6" fill="${ink}" ${F}>Copy B—To Be Filed With Employee's FEDERAL Tax Return.</text>`;
+    return s + `</svg>`;
+  }
+  function receipt(){
+    const W=120,H=260; let s=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H${W}V${H-8}`;
+    for(let x=W; x>0; x-=8) s += `L${x-4} ${H} L${x-8} ${H-8}`;
+    s += `Z" fill="#fbfaf4"/><text x="60" y="22" font-size="9" font-weight="800" text-anchor="middle" fill="#333" ${F}>OFFICE SUPPLY CO.</text>
+      <line x1="10" y1="32" x2="110" y2="32" stroke="#999" stroke-dasharray="2 2"/>`;
+    const items=[['Printer paper','24.99'],['Toner','68.40'],['Folders (25)','11.25'],['Stamps','14.60'],['Calculator tape','6.19']];
+    items.forEach((it,k)=>{ s+=`<text x="10" y="${50+k*16}" font-size="7" fill="#333" ${F}>${it[0]}</text><text x="110" y="${50+k*16}" font-size="7" text-anchor="end" fill="#333" ${F}>${it[1]}</text>`});
+    s += `<line x1="10" y1="140" x2="110" y2="140" stroke="#999" stroke-dasharray="2 2"/>
+      <text x="10" y="156" font-size="7" fill="#333" ${F}>Tax</text><text x="110" y="156" font-size="7" text-anchor="end" fill="#333" ${F}>9.46</text>
+      <text x="10" y="174" font-size="9" font-weight="800" fill="#333" ${F}>TOTAL</text><text x="110" y="174" font-size="9" font-weight="800" text-anchor="end" fill="#333" ${F}>134.89</text>
+      <g fill="#333">${Array.from({length:30},(_,k)=>`<rect x="${14+k*3.1}" y="200" width="${k%3?1.2:2.2}" height="26"/>`).join('')}</g>
+      <text x="60" y="${H-18}" font-size="6" text-anchor="middle" fill="#555" ${F}>KEEP FOR YOUR RECORDS</text></svg>`;
+    return s;
+  }
+  function calculator(){
+    let s=`<svg viewBox="0 0 150 210" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="210" rx="14" fill="#2b3035"/><rect x="4" y="4" width="142" height="202" rx="11" fill="#3a4047"/>
+      <rect x="14" y="16" width="122" height="40" rx="4" fill="#b9c7a8"/><text x="128" y="45" font-size="20" text-anchor="end" fill="#1f2a1a" font-family="Courier New, monospace" font-weight="700">1,040.00</text>`;
+    const keys=['C','±','%','÷','7','8','9','×','4','5','6','−','1','2','3','+'];
+    keys.forEach((k,i)=>{const c=i%4, r=Math.floor(i/4); const x=14+c*31, y=68+r*33; const op=c===3;
+      s+=`<rect x="${x}" y="${y}" width="27" height="27" rx="5" fill="${op?'#e0a526':(r===0?'#8a939b':'#555d65')}"/><text x="${x+13.5}" y="${y+18}" font-size="12" font-weight="700" text-anchor="middle" fill="#fff" ${F}>${k}</text>`});
+    s+=`<rect x="14" y="200" width="0" height="0"/></svg>`; return s;
+  }
+  function pencil(){
+    return `<svg viewBox="0 0 280 26" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="3" width="210" height="20" fill="#f2c230"/><rect x="30" y="3" width="210" height="6" fill="#f7d55a"/><rect x="30" y="17" width="210" height="6" fill="#d9a816"/>
+      <path d="M30 3 L2 13 L30 23Z" fill="#e8c9a0"/><path d="M10 10 L2 13 L10 16Z" fill="#333"/>
+      <rect x="240" y="3" width="16" height="20" fill="#b8b9bb"/><rect x="244" y="3" width="2" height="20" fill="#8d8e90"/><rect x="250" y="3" width="2" height="20" fill="#8d8e90"/>
+      <rect x="256" y="3" width="22" height="20" rx="4" fill="#e59a9a"/></svg>`;
+  }
+
+  const w2boxes = ["a  Employee's social security number","b  Employer identification number (EIN)","c  Employer's name, address, and ZIP code","d  Control number","1  Wages, tips, other compensation","2  Federal income tax withheld","3  Social security wages","4  Social security tax withheld","5  Medicare wages and tips","6  Medicare tax withheld","12a  See instructions for box 12","13  Statutory employee"];
+  const necBoxes = ["PAYER'S name, street address, city","PAYER'S TIN","RECIPIENT'S TIN","RECIPIENT'S name","1  Nonemployee compensation","2  Payer made direct sales totaling $5,000","3  Excess golden parachute payments","4  Federal income tax withheld","5  State tax withheld","6  State/Payer's state no."];
+
+  const items = [
+    {x:'56%', y:'6%',  w:370, r:6,   d:.10, depth:.55, svg:linesForm({W:370,H:480,num:'1040',title:'U.S. Individual Income Tax Return',sub:'Department of the Treasury—Internal Revenue Service',year:'2025'})},
+    {x:'80%', y:'-4%', w:300, r:-13, d:.25, depth:.3,  svg:linesForm({W:300,H:400,num:'Sch C',title:'Profit or Loss From Business',sub:'(Sole Proprietorship)',year:'2025',start:1}), cls:'hide-sm'},
+    {x:'70%', y:'50%', w:390, r:-8,  d:.40, depth:.85, svg:gridForm({W:390,H:280,num:'W-2',title:'Wage and Tax Statement',sub:'Department of the Treasury—Internal Revenue Service',year:'2025',ink:'#b3302b',boxes:w2boxes})},
+    {x:'-5%', y:'58%', w:330, r:11,  d:.55, depth:.4,  svg:gridForm({W:330,H:250,num:'1099-NEC',title:'Nonemployee Compensation',sub:'For calendar year 2025',year:'',ink:'#b3302b',boxes:necBoxes})},
+    {x:'2%',  y:'2%',  w:270, r:-9,  d:.18, depth:.45, svg:linesForm({W:270,H:340,num:'W-4',title:"Employee's Withholding Certificate",sub:'Complete Form W-4 so your employer can withhold',year:'2026'}), cls:'hide-sm'},
+    {x:'47%', y:'64%', w:120, r:-5,  d:.70, depth:1.1, svg:receipt(), cls:'hide-sm'},
+    {x:'88%', y:'30%', w:150, r:13,  d:.82, depth:1.3, svg:calculator()},
+    {x:'34%', y:'86%', w:280, r:-24, d:.95, depth:1.5, svg:pencil()}
+  ];
+  const desk = document.getElementById('desk');
+  const els = items.map(it=>{
+    const el = document.createElement('div');
+    el.className = 'item ' + (it.cls||'');
+    el.style.cssText = `--x:${it.x};--y:${it.y};--w:${it.w};--r:${it.r}deg;--d:${it.d}s`;
+    el.innerHTML = `<div class="drop"><div class="rot">${it.svg}</div></div>`;
+    desk.appendChild(el); return {el, depth:it.depth};
+  });
+
+  // Parallax on scroll + mouse
+  let mx=0, my=0, tx=0, ty=0, sy=window.scrollY, ticking=false;
+  function paint(){
+    tx += (mx - tx) * .08; ty += (my - ty) * .08;
+    const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    const p = sy / max;
+    grove.style.transform = `translate3d(${tx*-4}px, ${ty*-3 - p*90}px, 0) scale(1.03)`;
+    els.forEach(({el,depth})=>{
+      el.style.transform = `translate3d(${tx*depth*14}px, ${ty*depth*10 - p*depth*260}px, 0)`;
+    });
+    if (Math.abs(mx-tx) > .002 || Math.abs(my-ty) > .002) requestAnimationFrame(paint); else ticking=false;
+  }
+  function kick(){ if(!ticking){ ticking=true; requestAnimationFrame(paint); } }
+  if(!reduce){
+    addEventListener('pointermove', e=>{ if(e.pointerType!=='mouse') return; mx = (e.clientX/innerWidth - .5)*2; my = (e.clientY/innerHeight - .5)*2; kick(); }, {passive:true});
+  }
+
+  /* ================= Header, menu, back-to-top ================= */
+  const top = document.getElementById('top'), toTop = document.getElementById('toTop'), bar = document.getElementById('ringBar');
+  const C = 2*Math.PI*25;
+  function onScroll(){
+    sy = window.scrollY;
+    top.classList.toggle('scrolled', sy > 20);
+    toTop.classList.toggle('show', sy > 450);
+    const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    bar.style.strokeDashoffset = C * (1 - Math.min(1, sy/max));
+    if(!reduce) kick();
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  toTop.addEventListener('click', ()=>{
+    window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'});
+    setTimeout(()=>document.querySelector('.brand').focus({preventScroll:true}), reduce?0:700);
+  });
+
+  const menuBtn = document.getElementById('menuBtn'), nav = document.getElementById('nav');
+  function setMenu(open){ nav.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); menuBtn.setAttribute('aria-label', open?'Close menu':'Open menu'); }
+  menuBtn.addEventListener('click', ()=> setMenu(!nav.classList.contains('open')));
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setMenu(false)));
+  addEventListener('keydown', e=>{ if(e.key==='Escape') setMenu(false); });
+  document.addEventListener('click', e=>{ if(nav.classList.contains('open') && !nav.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false); });
+
+  /* ================= Services ================= */
+  const services = [
+    {name:'Individual tax returns', sub:'Federal and state returns, done right the first time', inc:['W-2, retirement, and Social Security income','Investments, rental property, and side income','E-file with direct deposit of your refund','Prior-year and amended returns']},
+    {name:'Small business tax returns', sub:'Sole proprietors, LLCs, partnerships, and S corps', inc:['Schedule C for sole proprietors and single-member LLCs','Partnership (1065) and S corporation (1120-S) returns','K-1s prepared for each owner','Depreciation and deduction review']},
+    {name:'Bookkeeping', sub:'Clean, current books every month', inc:['Monthly bank and credit card reconciliation','Transactions categorized for tax time','Profit & loss and balance sheet reports','Catch-up bookkeeping for past months']},
+    {name:'Payroll & 1099s', sub:'Pay your people and stay compliant', inc:['Payroll processing and pay stubs','Quarterly 941 and state payroll filings','Year-end W-2s for employees','1099-NEC forms for contractors']},
+    {name:'Tax planning & estimated payments', sub:'Fewer surprises when you file', inc:['Quarterly estimated tax calculations','Planning for a new business, home, or retirement','Entity choice guidance (LLC vs. S corp)','Mid-year check-ins to adjust withholding']},
+    {name:'IRS & state notices', sub:'Got a letter? Send it our way', inc:['Review of IRS and state notices','Written responses and supporting documents','Payment plan setup','Correcting past filing issues']}
+  ];
+  const list = document.getElementById('lines'), sel = document.getElementById('service');
+  services.forEach((s,i)=>{
+    const li = document.createElement('li'); li.className='line';
+    const id = 'svc'+i;
+    li.innerHTML = `<button class="line-btn" aria-expanded="false" aria-controls="${id}">
+        <span class="lno">${i+1}</span>
+        <span class="lname">${s.name}<small>${s.sub}</small></span>
+        <span class="lbox" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="ldetail" id="${id}" role="region" aria-label="${s.name} details"><div><div class="ldetail-in">
+        <ul>${s.inc.map(x=>`<li>${x}</li>`).join('')}</ul>
+        <button class="ask" type="button" data-svc="${s.name}">Ask about this service</button>
+      </div></div></div>`;
+    list.appendChild(li);
+    const o = document.createElement('option'); o.value = o.textContent = s.name; sel.appendChild(o);
+    const btn = li.querySelector('.line-btn');
+    btn.addEventListener('click', ()=>{
+      const open = !li.classList.contains('open');
+      li.classList.toggle('open', open); btn.setAttribute('aria-expanded', open);
+    });
+  });
+  const oOther = document.createElement('option'); oOther.value = oOther.textContent = 'Something else'; sel.appendChild(oOther);
+  list.querySelectorAll('.line')[0].querySelector('.line-btn').click();
+
+  list.addEventListener('click', e=>{
+    const b = e.target.closest('.ask'); if(!b) return;
+    sel.value = b.dataset.svc;
+    document.getElementById('contact').scrollIntoView({behavior: reduce?'auto':'smooth'});
+    setTimeout(()=>document.getElementById('name').focus({preventScroll:true}), reduce?0:650);
+  });
+
+  /* ================= Deadlines ================= */
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function bump(d){ const w=d.getDay(); if(w===6) d.setDate(d.getDate()+2); if(w===0) d.setDate(d.getDate()+1); return d; }
+  function deadlinesFor(y){
+    return [
+      {m:0,d:15,t:'Fourth-quarter estimated tax payment',s:`For tax year ${y-1}`,f:'ind biz'},
+      {m:0,d:31,t:'W-2s and 1099-NECs due',s:'To employees, contractors, and the IRS',f:'biz'},
+      {m:2,d:15,t:'Partnership and S corp returns',s:'Forms 1065 and 1120-S, or file an extension',f:'biz'},
+      {m:3,d:15,t:'Individual returns and first-quarter estimates',s:`Form 1040 for ${y-1}, or file an extension`,f:'ind biz'},
+      {m:5,d:15,t:'Second-quarter estimated tax payment',s:`For tax year ${y}`,f:'ind biz'},
+      {m:8,d:15,t:'Third-quarter estimates and extended business returns',s:'Extended 1065 and 1120-S due',f:'ind biz'},
+      {m:9,d:15,t:'Extended individual returns',s:`Form 1040 for ${y-1} on extension`,f:'ind'}
+    ].map(x=>({...x, date:bump(new Date(y,x.m,x.d))}));
+  }
+  const today = new Date(); today.setHours(0,0,0,0);
+  const all = [...deadlinesFor(today.getFullYear()), ...deadlinesFor(today.getFullYear()+1)].filter(x=>x.date>=today).sort((a,b)=>a.date-b.date);
+  const rows = document.getElementById('dlRows'), daysEl = document.getElementById('dlDays'), whatEl = document.getElementById('dlWhat');
+  function countUp(target){
+    if(reduce){ daysEl.textContent = target; return; }
+    const t0 = performance.now(), dur = 900;
+    (function step(t){ const k = Math.min(1,(t-t0)/dur); daysEl.textContent = Math.round(target*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(step); })(t0);
+  }
+  function render(f, anim=true){
+    const set = all.filter(x=> f==='all' || x.f.includes(f)).slice(0,4);
+    rows.innerHTML = set.map(x=>`<div class="dl-row"><div class="dl-date"><b>${x.date.getDate()}</b><span>${MONTHS[x.date.getMonth()]} ${x.date.getFullYear()}</span></div><div class="t">${x.t}<small>${x.s}</small></div></div>`).join('');
+    const n = set[0]; const days = Math.round((n.date - today)/864e5);
+    whatEl.innerHTML = `<b>${days===1?'day':'days'} until ${MONTHS[n.date.getMonth()]} ${n.date.getDate()}</b>${n.t}`;
+    if(anim) countUp(days); else daysEl.textContent = reduce ? days : 0;
+  }
+  document.querySelectorAll('.dl-tabs button').forEach(b=>b.addEventListener('click', ()=>{
+    document.querySelectorAll('.dl-tabs button').forEach(x=>x.setAttribute('aria-pressed', x===b));
+    render(b.dataset.f);
+  }));
+  // Count up when the section first comes into view
+  let counted=false;
+  new IntersectionObserver((ents,obs)=>{ if(ents[0].isIntersecting && !counted){ counted=true; render('all'); obs.disconnect(); } }, {threshold:.35}).observe(document.getElementById('deadlines'));
+  render('all', false);
+
+  /* ================= Contact form ================= */
+  const form = document.getElementById('contactForm'), status = document.getElementById('status'), sendBtn = document.getElementById('sendBtn');
+  const sent = document.getElementById('sent'), sentMsg = document.getElementById('sentMsg');
+  const checks = {
+    name: v => v.trim().length > 1,
+    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+    message: v => v.trim().length > 4
+  };
+  function validate(id){ const el = document.getElementById(id); const ok = checks[id](el.value); el.closest('.box').classList.toggle('invalid', !ok); el.setAttribute('aria-invalid', !ok); return ok; }
+  Object.keys(checks).forEach(id=>{
+    const el = document.getElementById(id);
+    el.addEventListener('blur', ()=>{ if(el.value) validate(id); });
+    el.addEventListener('input', ()=>{ if(el.closest('.box').classList.contains('invalid')) validate(id); });
+  });
+  form.addEventListener('submit', async e=>{
+    e.preventDefault();
+    status.className='status';
+    const bad = Object.keys(checks).filter(id=>!validate(id));
+    if(bad.length){ document.getElementById(bad[0]).focus(); return; }
+    if(form._honey.value) return;
+    sendBtn.disabled = true; sendBtn.textContent = 'Sending…';
+    const data = Object.fromEntries(new FormData(form).entries());
+    try{
+      const res = await fetch('https://formsubmit.co/ajax/candy@taxkeepingllc.com', {
+        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(data)
+      });
+      const out = await res.json().catch(()=>({}));
+      if(!res.ok || out.success === 'false' || out.success === false) throw new Error(out.message || 'Send failed');
+      form.style.display='none'; sentMsg.textContent = `Thanks, ${data.name.trim().split(' ')[0]}. We'll reply to ${data.email.trim()} soon.`;
+      sent.classList.add('show'); sent.focus();
+    }catch(err){
+      status.className='status bad show';
+      status.innerHTML = `Your message didn't go through. Try again, or email <a href="mailto:candy@taxkeepingllc.com?subject=${encodeURIComponent('Website inquiry')}&body=${encodeURIComponent(data.message||'')}">candy@taxkeepingllc.com</a> directly.`;
+    }finally{
+      sendBtn.disabled = false; sendBtn.textContent = 'Send message';
+    }
+  });
+  document.getElementById('againBtn').addEventListener('click', ()=>{
+    form.reset(); form.style.display=''; sent.classList.remove('show'); document.getElementById('name').focus();
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
